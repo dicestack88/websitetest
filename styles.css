@@ -1,126 +1,136 @@
-/* ===== Global ===== */
+/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== Body ===== */
 body {
   font-family: 'Inter', sans-serif;
-  background: #0b0b0b;
-  color: white;
-}
-
-a {
-  text-decoration: none;
+  background-color: #0e0e0e;
   color: white;
 }
 
 /* ===== Navbar ===== */
 .navbar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 80px;
-  border-bottom: 1px solid #1f1f1f;
+  padding: 20px 60px;
+  border-bottom: 1px solid #222;
 }
 
 .logo {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #00ffbf;
 }
 
 .nav-links a {
-  margin-left: 40px;
-  font-weight: 600;
+  margin-left: 30px;
   color: #ccc;
-  transition: 0.3s;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 .nav-links a:hover {
   color: #00ffbf;
 }
 
-/* ===== Page Layout ===== */
-.page {
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  padding: 120px 20px 80px 20px;
   max-width: 900px;
-  margin: 80px auto;
-  padding: 20px;
+  margin: auto;
 }
 
-.page h1 {
+.hero h1 {
+  font-size: 3rem;
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-.page p {
-  color: #bbb;
+.hero p {
+  color: #aaa;
   margin-bottom: 30px;
 }
 
-/* ===== Wide Social Cards ===== */
-.wide-list {
+.btn {
+  background: #00ffbf;
+  color: black;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Cards ===== */
+.cards-container {
+  max-width: 1000px;
+  margin: 40px auto 80px auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.card {
+  padding: 30px;
+  border-radius: 15px;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: flex-end;
+  transition: 0.2s;
 }
 
-.wide-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 25px;
-  border-radius: 14px;
-  transition: 0.25s;
-  color: white;
+.card h2 {
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 8px;
 }
 
-.wide-card:hover {
-  transform: translateX(8px);
-  filter: brightness(1.1);
+.card p {
+  color: #ddd;
 }
 
-/* Brand Colors */
-.youtube { background: #ff0000; }
-.discord { background: #5865F2; }
-.reddit { background: #ff4500; }
-.instagram { background: #e1306c; }
-.twitter { background: #1da1f2; }
-
-/* Text */
-.wide-card-text h3 {
-  font-size: 1.3rem;
-  margin-bottom: 5px;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-.wide-card-text p {
-  color: rgba(255,255,255,0.85);
-  font-size: 0.95rem;
-}
+/* Card colors */
+.card1 { background-color: #1f2933; }
+.card2 { background-color: #2b2d42; }
+.card3 { background-color: #283618; }
+.card4 { background-color: #3a0ca3; }
 
-/* Image */
-.wide-card img {
-  width: 55px;
-  height: 55px;
-  object-fit: cover;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.2);
-  padding: 6px;
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #222;
+  color: #777;
 }
 
 /* ===== Mobile ===== */
 @media (max-width: 800px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
   .navbar {
-    padding: 20px 30px;
+    padding: 20px;
   }
 
-  .page {
-    margin: 40px auto;
-  }
-
-  .wide-card {
-    flex-direction: row;
+  .hero h1 {
+    font-size: 2.2rem;
   }
 }
