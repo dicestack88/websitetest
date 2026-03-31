@@ -58,9 +58,12 @@ class ParticleSystem {
     this.canvas.style.height = '100%';
     this.canvas.style.pointerEvents = 'none';
     this.canvas.style.zIndex = '-1';
+    this.canvas.style.background = 'transparent';
+    document.body.style.position = 'relative';
+    document.body.style.zIndex = '0';
     document.body.prepend(this.canvas);
 
-    this.ctx = this.canvas.getContext('2d');
+    this.ctx = this.canvas.getContext('2d', { alpha: true });
     this.particles = [];
     
     this.resizeCanvas();
@@ -84,16 +87,14 @@ class ParticleSystem {
   }
 
   animate() {
-    if (this.settings.enabled) {
-      this.ctx.fillStyle = 'rgba(11, 11, 11, 0.1)';
-      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    // Clear canvas properly without fading effect
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+    if (this.settings.enabled) {
       for (let particle of this.particles) {
         particle.update();
         particle.draw(this.ctx);
       }
-    } else {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     requestAnimationFrame(() => this.animate());
@@ -126,7 +127,7 @@ class ParticleSystem {
       settingsBtn.style.background = 'rgba(11, 11, 11, 0.9)';
       settingsBtn.style.transform = 'scale(1) rotate(0deg)';
     };
-    document.body.prepend(settingsBtn);
+    document.body.appendChild(settingsBtn);
 
     // Settings modal
     const modal = document.createElement('div');
