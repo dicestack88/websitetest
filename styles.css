@@ -1,50 +1,52 @@
-/* ===== Reset ===== */
+/* ===== Global ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== Body ===== */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0e0e0e;
+  background: #0b0b0b;
+  color: white;
+}
+
+a {
+  text-decoration: none;
   color: white;
 }
 
 /* ===== Navbar ===== */
 .navbar {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 60px;
-  border-bottom: 1px solid #222;
+  padding: 25px 80px;
+  background: #0b0b0b;
+  border-bottom: 1px solid #1f1f1f;
 }
 
 .logo {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #00ffbf;
 }
 
-.nav-links a {
-  margin-left: 30px;
-  color: #ccc;
+.navbar nav a {
+  margin-left: 40px;
   font-weight: 600;
-  transition: 0.2s;
+  color: #ccc;
+  transition: 0.3s;
 }
 
-.nav-links a:hover {
+.navbar nav a:hover {
   color: #00ffbf;
 }
 
 /* ===== Hero ===== */
 .hero {
   text-align: center;
-  padding: 120px 20px 80px 20px;
-  max-width: 900px;
-  margin: auto;
+  padding: 140px 20px 100px;
 }
 
 .hero h1 {
@@ -55,79 +57,81 @@ body {
 
 .hero p {
   color: #aaa;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .btn {
   background: #00ffbf;
   color: black;
-  padding: 12px 30px;
-  border-radius: 30px;
+  padding: 14px 36px;
+  border-radius: 40px;
   font-weight: bold;
-  display: inline-block;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .btn:hover {
   transform: scale(1.05);
 }
 
-/* ===== Cards ===== */
-.cards-container {
-  max-width: 1000px;
-  margin: 40px auto 80px auto;
-  padding: 20px;
+/* ===== Cards Section ===== */
+.sections {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
+/* ===== Cards ===== */
 .card {
-  padding: 30px;
-  border-radius: 15px;
-  min-height: 160px;
+  padding: 40px;
+  border-radius: 18px;
+  min-height: 180px;
+  transition: 0.25s;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transition: 0.2s;
 }
 
 .card h2 {
   font-family: 'Orbitron', sans-serif;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .card p {
-  color: #ddd;
+  color: #e0e0e0;
 }
 
+/* Flat modern colors */
+.card1 { background: #1f2933; }
+.card2 { background: #2b2d42; }
+.card3 { background: #283618; }
+.card4 { background: #3a0ca3; }
+
+/* Hover */
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
-
-/* Card colors */
-.card1 { background-color: #1f2933; }
-.card2 { background-color: #2b2d42; }
-.card3 { background-color: #283618; }
-.card4 { background-color: #3a0ca3; }
 
 /* ===== Footer ===== */
 .footer {
   text-align: center;
-  padding: 30px;
-  border-top: 1px solid #222;
+  padding: 40px;
+  margin-top: 60px;
+  border-top: 1px solid #1f1f1f;
   color: #777;
 }
 
 /* ===== Mobile ===== */
 @media (max-width: 800px) {
-  .cards-container {
+  .sections {
     grid-template-columns: 1fr;
   }
 
   .navbar {
-    padding: 20px;
+    padding: 20px 30px;
   }
 
   .hero h1 {
