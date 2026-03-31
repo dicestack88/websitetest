@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500&display=swap');
+
 /* ===== Global ===== */
 * {
   margin: 0;
@@ -32,18 +34,20 @@ a {
   color: #00ffbf;
 }
 
-.navbar nav a {
+.navbar nav a,
+.nav-links a {
   margin-left: 40px;
   font-weight: 600;
   color: #ccc;
   transition: 0.3s;
 }
 
-.navbar nav a:hover {
+.navbar nav a:hover,
+.nav-links a:hover {
   color: #00ffbf;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero (Home Page) ===== */
 .hero {
   text-align: center;
   padding: 140px 20px 100px;
@@ -73,7 +77,7 @@ a {
   transform: scale(1.05);
 }
 
-/* ===== Cards Section ===== */
+/* ===== Cards Section (Home Page) ===== */
 .sections {
   max-width: 1100px;
   margin: auto;
@@ -83,7 +87,6 @@ a {
   gap: 30px;
 }
 
-/* ===== Cards ===== */
 .card {
   padding: 40px;
   border-radius: 18px;
@@ -103,17 +106,246 @@ a {
   color: #e0e0e0;
 }
 
-/* Flat modern colors */
 .card1 { background: #1f2933; }
 .card2 { background: #2b2d42; }
 .card3 { background: #283618; }
 .card4 { background: #3a0ca3; }
 
-/* Hover */
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
+
+/* ===== Page Layout ===== */
+.page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.page h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.page p {
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+/* ===== Socials Page ===== */
+.wide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wide-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 25px;
+  border-radius: 14px;
+  transition: 0.25s;
+  color: white;
+}
+
+.wide-card:hover {
+  transform: translateX(8px);
+  filter: brightness(1.1);
+}
+
+.youtube { background: #ff0000; }
+.discord { background: #5865F2; }
+.reddit { background: #ff4500; }
+.instagram { background: #e1306c; }
+.twitter { background: #1da1f2; }
+
+.wide-card-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.wide-card-text p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+}
+
+.wide-card img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  padding: 6px;
+}
+
+/* ===== Clients Page ===== */
+.client-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.client-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 30px;
+  border-radius: 16px;
+  transition: 0.25s;
+}
+
+.client-card h2 {
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 6px;
+}
+
+.client-card p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+}
+
+.launch {
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.client-card:hover {
+  transform: translateX(10px);
+  filter: brightness(1.1);
+}
+
+.eb { background: #00b4d8; }
+.modern { background: #7209b7; }
+.tuff { background: #f72585; }
+.resent { background: #2a9d8f; }
+.launcher { background: #fca311; }
+
+.eb:hover { box-shadow: 0 0 25px #00b4d8; }
+.modern:hover { box-shadow: 0 0 25px #7209b7; }
+.tuff:hover { box-shadow: 0 0 25px #f72585; }
+.resent:hover { box-shadow: 0 0 25px #2a9d8f; }
+.launcher:hover { box-shadow: 0 0 25px #fca311; }
+
+/* ===== About Page ===== */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.about-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid #00ffbf;
+  border-opacity: 0.2;
+  transition: 0.25s;
+}
+
+.about-section:hover {
+  transform: translateY(-5px);
+  border-color: #00ffbf;
+  box-shadow: 0 0 20px rgba(0, 255, 191, 0.3);
+}
+
+.about-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #00ffbf;
+}
+
+.about-section p {
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* ===== Games Page ===== */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px;
+  border-radius: 14px;
+  transition: 0.25s;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.25s;
+  z-index: -1;
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  filter: brightness(1.15);
+}
+
+.game-card:hover::before {
+  opacity: 0.2;
+}
+
+.game-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.game-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.play-badge {
+  font-weight: bold;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  align-self: flex-start;
+  background: rgba(0, 255, 191, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 191, 0.3);
+  transition: 0.25s;
+}
+
+.game-card:hover .play-badge {
+  background: rgba(0, 255, 191, 0.2);
+  border-color: rgba(0, 255, 191, 0.5);
+}
+
+.hypixel { background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%); }
+.minemen { background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); }
+.badlion { background: linear-gradient(135deg, #9d4edd 0%, #6a0572 100%); }
+.valorant { background: linear-gradient(135deg, #ff4655 0%, #a30015 100%); }
+.csgo { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+.rust { background: linear-gradient(135deg, #c1272d 0%, #8b0000 100%); }
+
+.hypixel:hover { box-shadow: 0 0 25px rgba(255, 107, 0, 0.6); }
+.minemen:hover { box-shadow: 0 0 25px rgba(0, 212, 255, 0.6); }
+.badlion:hover { box-shadow: 0 0 25px rgba(157, 78, 221, 0.6); }
+.valorant:hover { box-shadow: 0 0 25px rgba(255, 70, 85, 0.6); }
+.csgo:hover { box-shadow: 0 0 25px rgba(0, 255, 191, 0.4); }
+.rust:hover { box-shadow: 0 0 25px rgba(193, 39, 45, 0.6); }
 
 /* ===== Footer ===== */
 .footer {
@@ -126,15 +358,45 @@ a {
 
 /* ===== Mobile ===== */
 @media (max-width: 800px) {
-  .sections {
-    grid-template-columns: 1fr;
-  }
-
   .navbar {
     padding: 20px 30px;
   }
 
+  .sections {
+    grid-template-columns: 1fr;
+  }
+
   .hero h1 {
     font-size: 2.2rem;
+  }
+
+  .page {
+    margin: 40px auto;
+  }
+
+  .wide-card {
+    flex-direction: row;
+  }
+
+  .client-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .launch {
+    align-self: flex-end;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-card {
+    min-height: 140px;
   }
 }
