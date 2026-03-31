@@ -217,3 +217,46 @@ a {
   border-radius: 10px;
   margin-left: 20px;
 }
+/* ===== Colored Wide Cards ===== */
+.wide-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 25px;
+  border-radius: 14px;
+  transition: 0.2s;
+  color: white;
+}
+
+.wide-card:hover {
+  transform: translateX(8px);
+  filter: brightness(1.1);
+}
+
+/* Brand Colors */
+.youtube { background: #ff0000; }
+.discord { background: #5865F2; }
+.reddit { background: #ff4500; }
+.instagram { background: #e1306c; }
+.twitter { background: #1da1f2; }
+
+/* Text */
+.wide-card-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.wide-card-text p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+}
+
+/* Image */
+.wide-card img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  padding: 5px;
+}
