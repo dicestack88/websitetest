@@ -1,0 +1,132 @@
+/* ===== Global ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 80px;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  color: #00ffbf;
+}
+
+.nav-links a {
+  margin-left: 40px;
+  font-weight: 600;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ffbf;
+}
+
+/* ===== Page ===== */
+.page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.page h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.page p {
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+/* ===== Client List ===== */
+.client-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== Client Card ===== */
+.client-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 30px;
+  border-radius: 16px;
+  transition: 0.25s;
+}
+
+/* Text */
+.client-card h2 {
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 6px;
+}
+
+.client-card p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+}
+
+/* Launch text */
+.launch {
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+/* Hover */
+.client-card:hover {
+  transform: translateX(10px);
+  filter: brightness(1.1);
+}
+
+/* ===== Colors ===== */
+.eb { background: #00b4d8; }
+.modern { background: #7209b7; }
+.tuff { background: #f72585; }
+.resent { background: #2a9d8f; }
+.launcher { background: #fca311; }
+
+/* Glow effect */
+.eb:hover { box-shadow: 0 0 25px #00b4d8; }
+.modern:hover { box-shadow: 0 0 25px #7209b7; }
+.tuff:hover { box-shadow: 0 0 25px #f72585; }
+.resent:hover { box-shadow: 0 0 25px #2a9d8f; }
+.launcher:hover { box-shadow: 0 0 25px #fca311; }
+
+/* ===== Mobile ===== */
+@media (max-width: 800px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .client-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .launch {
+    align-self: flex-end;
+  }
+}
