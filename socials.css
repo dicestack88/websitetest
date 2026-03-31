@@ -1,1 +1,126 @@
+/* ===== Global ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 80px;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  color: #00ffbf;
+}
+
+.nav-links a {
+  margin-left: 40px;
+  font-weight: 600;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ffbf;
+}
+
+/* ===== Page Layout ===== */
+.page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.page h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.page p {
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+/* ===== Wide Social Cards ===== */
+.wide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wide-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 25px;
+  border-radius: 14px;
+  transition: 0.25s;
+  color: white;
+}
+
+.wide-card:hover {
+  transform: translateX(8px);
+  filter: brightness(1.1);
+}
+
+/* Brand Colors */
+.youtube { background: #ff0000; }
+.discord { background: #5865F2; }
+.reddit { background: #ff4500; }
+.instagram { background: #e1306c; }
+.twitter { background: #1da1f2; }
+
+/* Text */
+.wide-card-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.wide-card-text p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+}
+
+/* Image */
+.wide-card img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  padding: 6px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 800px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .page {
+    margin: 40px auto;
+  }
+
+  .wide-card {
+    flex-direction: row;
+  }
+}
