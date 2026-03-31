@@ -1,0 +1,140 @@
+/* ===== Global ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 80px;
+  background: #0b0b0b;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  color: #00ffbf;
+}
+
+.navbar nav a {
+  margin-left: 40px;
+  font-weight: 600;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #00ffbf;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  padding: 140px 20px 100px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.btn {
+  background: #00ffbf;
+  color: black;
+  padding: 14px 36px;
+  border-radius: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Cards Section ===== */
+.sections {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* ===== Cards ===== */
+.card {
+  padding: 40px;
+  border-radius: 18px;
+  min-height: 180px;
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card h2 {
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #e0e0e0;
+}
+
+/* Flat modern colors */
+.card1 { background: #1f2933; }
+.card2 { background: #2b2d42; }
+.card3 { background: #283618; }
+.card4 { background: #3a0ca3; }
+
+/* Hover */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 40px;
+  margin-top: 60px;
+  border-top: 1px solid #1f1f1f;
+  color: #777;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 800px) {
+  .sections {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
