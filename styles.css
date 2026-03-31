@@ -175,3 +175,45 @@ a {
   background: #262626;
   transform: translateX(6px);
 }
+/* ===== Wide Link Cards ===== */
+.wide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wide-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  padding: 20px 25px;
+  border-radius: 14px;
+  transition: 0.2s;
+}
+
+.wide-card:hover {
+  background: #262626;
+  transform: translateX(8px);
+}
+
+/* Left text */
+.wide-card-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.wide-card-text p {
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+/* Right image */
+.wide-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-left: 20px;
+}
