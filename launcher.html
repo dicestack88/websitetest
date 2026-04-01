@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            --bg: #1e1e1e;
+            --font: 'Arial', sans-serif;
+            --color: #fff;
+        }
+
+        body {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        button {
+            position: relative;
+            margin: 0 4px;
+        }
+
+        .ver,
+        .cred {
+            position: absolute;
+            bottom: 0;
+            padding: 8px;
+        }
+
+        .ver {
+            left: 0;
+        }
+
+        .cred {
+            right: 0;
+        }
+
+        .loader {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--bg);
+            color: var(--color);
+            z-index: 1000;
+        }
+
+        .loader>div {
+            width: 200px;
+            height: 20px;
+            background: var(--color);
+            border: 1px solid var(--color);
+            outline: 1px solid #000;
+        }
+
+        .loader>div>div {
+            width: 0;
+            height: 100%;
+            background: #FF4545;
+            transition: width 0.5s;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .loader>div>span {
+            font-family: var(--font);
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .noscript {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .noscript * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>
+        <div class="noscript">
+            <h1>:(</h1>
+            <h3>It looks like javascript is disabled / blocked, making yee loader useless.</h3>
+        </div>
+    </noscript>
+    <div class="loader">
+        <div>
+            <div></div>
+            <span>Loading (%)</span>
+        </div>
+    </div>
+    <div class="content hidden">
+        <h1>Dicestack88's Yee Launcher</h1>
+        <button class="btn" id="blob" onclick="load('blob')">
+            Open Blob
+        </button>
+        <button class="btn" id="blank" onclick="load('blank')">
+            Open Blank
+        </button>
+        <!--<button class="btn" id="data" onclick="load('data')">
+        Open Data
+    </button>-->
+    </div>
+    <a class="ver hidden">what the skibidi sigma</a>
+    <a class="cred hidden">Made by Dicestack88</a>
+    <script>
+        let url;
+        let checkprogress = 0;
+        let loadprogress = 0;
+        let loadingText = {};
+
+        async function checkURL(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.status === 200 || !response.ok) throw new Error();
+                const data = await response.text() || await response.json();
+                return {
+                    status: true,
+                    data
+                };
+            } catch {
+                return {
+                    status: false,
+                    data: null
+                };
+            }
+        }
+
+        async function init(git_url) {
+            try {
+                const response = await fetch(
+                    git_url,
+                );
+                if (!response.status === 200 || !response.ok) {
+                    throw new Error(
+                        `HTTP error! Status: ${response.status}`,
+                    );
+                }
+
+                const b64 = await response.text();
+
+                const decoded = JSON.parse(atob(b64));
+
+                const array = Object.entries(decoded);
+
+                let i = 0;
+
+                for (const [num, url2] of array) {
+                    i++
+                    const fullURL = `${url2.replace(/^(https?:\/\/[^\/]+)\/index\.html$/, "$1/")}`;
+                    const urlCheck = `${fullURL}data/onlineCheck.txt`;
+                    const response = await checkURL(urlCheck);
+                    checkprogress = (i / array.length);
+                    if (response.status) {
+                        if (!url) url = fullURL;
+                        updateBar();
+                    } else {
+                        updateBar();
+                    }
+                }
+
+                if (!url) {
+                    if (!blockPrompt()) {
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                blockPrompt();
+            }
+            const styles = ["data/style.css", "data/button.css"];
+            for (let i = 0; i < styles.length; i++) {
+                const response = await fetch(`${url}${styles[i]}`);
+                let data = await response.text();
+                data = data.replace(/url\((?!https?:\/\/)['"]?([^)]+?)['"]?\)/g,
+                    `url(${url}${getFolder(styles[i])}/$1)`);
+                const blob = new Blob([data]);
+                const blobUrl = URL.createObjectURL(blob);
+                const style = document.createElement("link");
+                style.rel = "stylesheet";
+                style.href = blobUrl;
+                document.head.appendChild(style);
+                loadprogress = ((i + 1) / styles.length);
+                updateBar();
+            }
+        }
+
+        function getFolder(f) {
+            return f.slice(0, f.lastIndexOf('/')) || f;
+        }
+
+        function showMain() {
+            document.querySelectorAll('.hidden').forEach(el => {
+                el.classList.remove('hidden');
+            });
+            document.querySelector(".loader").remove();
+        }
+
+        function updateBar() {
+            const progress = ((checkprogress * 100) + (loadprogress * 100)) / 2;
+            const progressBar = document.querySelector(".loader > div > div");
+            progressBar.style.width = `${progress}%`;
+            loadingText.element.textContent = loadingText.text.replace("%", `${progress.toFixed(0)}%`);
+            if (progress >= 100) {
+                showMain();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const loadingTextElem = document.querySelector(".loader > div > span");
+            loadingText = {
+                element: loadingTextElem,
+                text: loadingTextElem.textContent
+            };
+            updateBar();
+            await init(
+                "https://raw.githubusercontent.com/ZYPHERStudios/assets/refs/heads/main/eWVlbGF1bmNoZXJ1cmxz"
+                );
+            if (location !== window.parent.location) {
+                document.documentElement.borderRadius = "2vh";
+            }
+            if (top.location.protocol === "file:" || top.location.protocol === "data:" || top.location
+                .protocol === "blob:" || top.location.protocol === "chrome-extension:") {
+                document.querySelector("#blob").remove();
+                const blank = document.querySelector("#blank");
+                blank.textContent = "Open";
+                blank.style = "transform: scale(1.2);";
+                document.querySelector(".content h1").style = "transform: scale(1.2);";
+            }
+        });
+
+        function load(type) {
+            const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          embed {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: none;
+          }
+        </style>
+      </head>
+      <body>
+        <embed src="${url}"></embed>
+      </body>
+      </html>
+    `;
+
+            let openURL;
+            let initCode;
+
+            if (type === "blob") {
+                const blob = new Blob([html], {
+                    type: "text/html"
+                });
+                openURL = URL.createObjectURL(blob);
+            } else if (type === "blank") {
+                openURL = "about:blank";
+                initCode = `
+          opened.document.documentElement.innerHTML = html;
+        `;
+            } else if (type === "data") {
+                openURL = "data:text/html;base64," + btoa(html);
+                prompt("Open this URL in a new tab:", openURL);
+                return;
+            }
+
+            const opened = window.open(openURL);
+
+            if (initCode) {
+                eval(initCode);
+            }
+        }
+
+        async function blockPrompt() {
+            if (confirm(
+                    "No working URLs found!\nThis could mean that:\n - Github is temporarily down\n - The repository is blocked\n - All links are blocked\n - The asset repository was deleted\n\nWould you like to use a new repo?"
+                    )) {
+                await init(prompt("Enter repository url",
+                    "https://raw.githubusercontent.com/ZYPHERStudios/assets/refs/heads/main/eWVlbGF1bmNoZXJ1cmxz"
+                    ));
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
